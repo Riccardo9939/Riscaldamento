@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuratore Preventivo | RiscaldamentoSemplice.it</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#fdfdfd] text-[#333333] font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <header class="bg-white border-b border-[#e5e7eb] py-4 shadow-sm">
+        <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-tight text-[#111827] flex items-center gap-1.5">
+                <span class="text-[#51b86d] text-2xl">■</span> Riscaldamento<span class="text-[#51b86d]">Semplice</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-12 px-4">
+        <div class="w-full max-w-2xl bg-white rounded-xl shadow-sm border border-[#e5e7eb] overflow-hidden">
+            
+            <div class="w-full bg-gray-100 h-1.5 relative">
+                <div id="progressBar" class="bg-[#3b82f6] h-full transition-all duration-300" style="width: 15%;"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="step-1" class="block">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Qual è la tua posizione?</h2>
+                    <div class="space-y-6">
+                        <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">CAP</label><input type="text" id="wizard-cap" maxlength="5" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                        <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Città</label><input type="text" id="wizard-citta" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                        <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Indirizzo</label><input type="text" id="wizard-indirizzo" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                        <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Numero civico</label><input type="text" id="wizard-civico" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                    </div>
+                </div>
+
+                <div id="step-2" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Tipo di progetto</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_progetto" value="Sostituzione riscaldamento" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Sostituzione riscaldamento</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_progetto" value="Installazione riscaldamento" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Installazione riscaldamento</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_progetto" value="Manutenzione riscaldamento" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Manutenzione riscaldamento</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_progetto" value="Installazione termosifoni" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Installazione termosifoni</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_progetto" value="Installazione pompe di calore" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Installazione pompe di calore</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_progetto" value="Manutenzione pompe di calore" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Manutenzione pompe di calore</span></label>
+                    </div>
+                </div>
+
+                <div id="step-3" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Tipo di proprietà</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_proprieta" value="Abitazione privata" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Abitazione privata</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_proprieta" value="Azienda" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Azienda</span></label>
+                    </div>
+                </div>
+
+                <div id="step-4" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Tipo di abitazione</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_abitazione" value="Casa" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Casa</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="tipo_abitazione" value="Appartamento" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Appartamento</span></label>
+                    </div>
+                </div>
+
+                <div id="step-5" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Dimensione abitazione</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="dimensione_abitazione" value="Fino a 50 m²" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Fino a 50 m²</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="dimensione_abitazione" value="50 - 100 m²" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>50 - 100 m²</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="dimensione_abitazione" value="100 m² o più" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>100 m² o più</span></label>
+                    </div>
+                </div>
+
+                <div id="step-6" class="hidden">
+                    <h2 id="titolo-step-6" class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Tipo di impianto desiderato</h2>
+                    <div id="opzioni-step-6" class="space-y-4"></div>
+                </div>
+
+                <div id="step-7" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Numero di stanze</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="numero_stanze" value="1 - 2" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>1 - 2</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="numero_stanze" value="3 - 4" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>3 - 4</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="numero_stanze" value="5 o più" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>5 o più</span></label>
+                    </div>
+                </div>
+
+                <div id="step-8" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Nuovo termostato necessario?</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="termostato_necessario" value="Sì" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Sì</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="termostato_necessario" value="No" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>No</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="termostato_necessario" value="Non so" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Non so</span></label>
+                    </div>
+                </div>
+
+                <div id="step-9" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Data inizio lavori</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="inizio_lavori" value="Entro 1 mese" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Entro 1 mese</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="inizio_lavori" value="Entro 1-3 mesi" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Entro 1-3 mesi</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="inizio_lavori" value="Entro 3-6 mesi" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Entro 3-6 mesi</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="inizio_lavori" value="Nessuna preferenza" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Nessuna preferenza</span></label>
+                    </div>
+                </div>
+
+                <div id="step-10" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-8">Hai intenzione di effettuare questo lavoro?</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="intenzione_lavoro" value="Sì, dopo aver confrontato i professionisti" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Sì, dopo aver confrontato i professionisti</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="intenzione_lavoro" value="Non ne sono ancora sicuro/a, dipende dalle informazioni che ottengo" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>Non ne sono ancora sicuro/a, dipende dalle informazioni che ottengo</span></label>
+                        <label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="intenzione_lavoro" value="No, cerco solo informazioni" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>No, cerco solo informazioni</span></label>
+                    </div>
+                </div>
+
+                <div id="step-11" class="hidden">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#2c3e50] mb-6">A chi dobbiamo inviare il preventivo?</h2>
+                    <p class="text-sm text-gray-500 mb-6">Inserisci i tuoi recapiti reali per ricevere le proposte gratuite dai professionisti della tua zona.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Nome</label><input type="text" id="final-nome" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                        <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Cognome</label><input type="text" id="final-cognome" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                        <div class="md:col-span-2"><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">E-mail</label><input type="email" id="final-email" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                        <div class="md:col-span-2"><label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Numero di telefono</label><input type="tel" id="final-telefono" class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm outline-none focus:border-[#51b86d] focus:ring-1 focus:ring-[#51b86d] transition-all font-medium"></div>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col items-center gap-4">
+                    <div class="w-full flex justify-between items-center">
+                        <button onclick="gestisciIndietro()" class="border border-[#51b86d] text-[#51b86d] font-semibold px-6 py-2.5 rounded-md hover:bg-emerald-50 transition-colors cursor-pointer text-sm">Indietro</button>
+                        <button onclick="gestisciAvanti()" id="btnNext" class="bg-[#51b86d] hover:bg-[#439e5b] text-white font-bold px-8 py-2.5 rounded-md transition-all flex items-center gap-1.5 cursor-pointer text-base shadow-sm">Avanti ➔</button>
+                    </div>
+                    <p class="text-xs font-medium text-gray-500 flex items-center gap-1 mt-2"><span class="text-[#51b86d] font-bold">✓</span> Gratis - Nessun obbligo</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-4 text-xs text-gray-500 font-medium">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 text-center">
+            <div class="flex items-center gap-1.5">⏱️ Ultimo preventivo richiesto <span class="font-bold text-gray-700">7 minuti fa</span></div>
+            <div class="flex items-center gap-1.5">📅 <span class="font-bold text-gray-700">198</span> richieste oggi</div>
+            <div class="flex items-center gap-1.5"><span class="text-emerald-500">🔒</span> <span class="font-bold text-gray-700">SSL</span> Protetto</div>
+        </div>
+    </footer>
+
+    <script>
+        let correnteStep = 1;
+        const totaliStep = 11;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            const salvatoCap = localStorage.getItem('data_cap');
+            if (salvatoCap) document.getElementById('wizard-cap').value = salvatoCap;
+            /*
+            // Carica altri campi se presenti
+            const fields = ['citta', 'indirizzo', 'civico'];
+            fields.forEach(f => {
+                const val = localStorage.getItem('data_' + f);
+                if(val) document.getElementById('wizard-' + f).value = val;
+            });
+            */
+        });
+
+        function nascondiTutti() {
+            for (let i = 1; i <= totaliStep; i++) {
+                const step = document.getElementById(`step-${i}`);
+                if(step) step.className = step.className.replace('block', 'hidden');
+            }
+        }
+
+        function renderizzaStep6() {
+            const progetto = localStorage.getItem('data_tipo_progetto');
+            const titolo = document.getElementById('titolo-step-6');
+            const contenitore = document.getElementById('opzioni-step-6');
+            contenitore.innerHTML = "";
+
+            if (progetto === "Manutenzione riscaldamento" || progetto === "Manutenzione pompe di calore") {
+                titolo.innerText = "Tipo di impianto esistente";
+                const opzioni = (progetto === "Manutenzione pompe di calore") 
+                    ? ["Aria/Acqua", "Aria/Aria", "Geotermica", "Altro"] 
+                    : ["Caldaia a condensazione", "Stufa a pellet", "Riscaldamento a pavimento", "Altro"];
+                opzioni.forEach(op => contenitore.innerHTML += generaHtmlRadio('tipo_impianto', op));
+            } else {
+                titolo.innerText = "Tipo di impianto desiderato";
+                const opzioni = (progetto === "Installazione pompe di calore")
+                    ? ["Aria/Acqua", "Aria/Aria", "Geotermica", "Ibrido"]
+                    : ["Caldaia a condensazione", "Pompa di calore", "Stufa o caldaia a biomassa"];
+                opzioni.forEach(op => contenitore.innerHTML += generaHtmlRadio('tipo_impianto', op));
+            }
+        }
+
+        function generaHtmlRadio(name, valore) {
+            return `<label class="flex items-center gap-3 p-3.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer font-medium text-gray-700"><input type="radio" name="${name}" value="${valore}" class="w-4 h-4 text-[#51b86d] focus:ring-[#51b86d]"> <span>${valore}</span></label>`;
+        }
+
+        function aggiornaInterfaccia() {
+            nascondiTutti();
+            if (correnteStep === 6) renderizzaStep6();
+            const stepAttuale = document.getElementById(`step-${correnteStep}`);
+            stepAttuale.className = stepAttuale.className.replace('hidden', 'block');
+            
+            const percentuale = 15 + ((correnteStep - 1) * (85 / (totaliStep - 1)));
+            document.getElementById('progressBar').style.width = `${percentuale}%`;
+            
+            const btnNext = document.getElementById('btnNext');
+            if (correnteStep === totaliStep) {
+                btnNext.innerText = "Ricevi preventivi gratis ➔";
+                btnNext.className = "bg-[#ff9f43] hover:bg-[#e68a2e] text-white font-extrabold px-8 py-3 rounded-md transition-all flex items-center gap-1.5 cursor-pointer text-base shadow-md";
+            } else {
+                btnNext.innerText = "Avanti ➔";
+                btnNext.className = "bg-[#51b86d] hover:bg-[#439e5b] text-white font-bold px-8 py-2.5 rounded-md transition-all flex items-center gap-1.5 cursor-pointer text-base shadow-sm";
+            }
+        }
+
+        function validaRadio(name) {
+            const checked = document.querySelector(`input[name="${name}"]:checked`);
+            if (!checked) { alert("Seleziona un'opzione per continuare."); return false; }
+            localStorage.setItem(`data_${name}`, checked.value);
+            return true;
+        }
+
+        function gestisciAvanti() {
+            const sceltaProprieta = localStorage.getItem('data_tipo_proprieta');
+            const sceltaProgetto = localStorage.getItem('data_tipo_progetto');
+
+            if (correnteStep === 1) {
+                const fields = ['cap', 'citta', 'indirizzo', 'civico'];
+                for (let f of fields) {
+                    const val = document.getElementById(`wizard-${f}`).value.trim();
+                    if(!val) { alert("Compila tutti i campi richiesti."); return; }
+                    localStorage.setItem(`data_${f}`, val);
+                }
+                correnteStep = 2;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 2) {
+                if (!validaRadio('tipo_progetto')) return;
+                correnteStep = 3;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 3) {
+                if (!validaRadio('tipo_proprieta')) return;
+                correnteStep = (localStorage.getItem('data_tipo_proprieta') === "Azienda") ? 5 : 4;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 4) {
+                if (!validaRadio('tipo_abitazione')) return;
+                correnteStep = 5;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 5) {
+                if (!validaRadio('dimensione_abitazione')) return;
+                correnteStep = 6;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 6) {
+                if (!validaRadio('tipo_impianto')) return;
+                if (sceltaProgetto === "Manutenzione riscaldamento" || sceltaProgetto === "Manutenzione pompe di calore") {
+                    correnteStep = 9;
+                } else {
+                    correnteStep = (sceltaProprieta === "Azienda") ? 8 : 7;
+                }
+                aggiornaInterfaccia();
+            } else if (correnteStep === 7) {
+                if (!validaRadio('numero_stanze')) return;
+                correnteStep = (sceltaProgetto === "Installazione termosifoni") ? 9 : 8;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 8) {
+                if (!validaRadio('termostato_necessario')) return;
+                correnteStep = 9;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 9) {
+                if (!validaRadio('inizio_lavori')) return;
+                correnteStep = 10;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 10) {
+                if (!validaRadio('intenzione_lavoro')) return;
+                correnteStep = 11;
+                aggiornaInterfaccia();
+            } else if (correnteStep === totaliStep) {
+                const campi = ['nome', 'cognome', 'email', 'telefono'];
+                let dati = {};
+                for(let c of campi) {
+                    const v = document.getElementById(`final-${c}`).value.trim();
+                    if(!v) { alert("Compila tutti i dati finali."); return; }
+                    dati[c] = v;
+                    localStorage.setItem(`lead_${c}`, v);
+                }
+                const chiaviData = ['cap', 'citta', 'indirizzo', 'civico', 'tipo_progetto', 'tipo_proprieta', 'tipo_abitazione', 'dimensione_abitazione', 'tipo_impianto', 'numero_stanze', 'termostato_necessario', 'inizio_lavori', 'intenzione_lavoro'];
+                chiaviData.forEach(k => { dati[k] = localStorage.getItem('data_' + k); });
+                fetch('https://hooks.zapier.com/hooks/catch/12462472/4228exp/', { method: 'POST', body: JSON.stringify(dati) })
+                .then(() => { window.location.href = './Riscaldamento/thank-you.html'; })
+                .catch(() => { window.location.href = './Riscaldamento/thank-you.html'; });
+            }
+        }
+
+        function gestisciIndietro() {
+            const sceltaProprieta = localStorage.getItem('data_tipo_proprieta');
+            const sceltaProgetto = localStorage.getItem('data_tipo_progetto');
+
+            if (correnteStep === 1) {
+                if (confirm("Tornare alla pagina principale?")) window.location.href = 'index.html';
+            } else if (correnteStep === 5) {
+                correnteStep = (sceltaProprieta === "Azienda") ? 3 : 4;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 6) {
+                correnteStep = 5;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 7) {
+                correnteStep = (sceltaProgetto === "Installazione termosifoni") ? 5 : 6;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 8) {
+                correnteStep = (sceltaProprieta === "Azienda") ? 6 : 7;
+                aggiornaInterfaccia();
+            } else if (correnteStep === 9) {
+                if (sceltaProgetto === "Installazione termosifoni") {
+                    correnteStep = (sceltaProprieta === "Azienda") ? 5 : 7;
+                } else if (sceltaProgetto === "Manutenzione riscaldamento" || sceltaProgetto === "Manutenzione pompe di calore") {
+                    correnteStep = 6;
+                } else {
+                    correnteStep = 8;
+                }
+                aggiornaInterfaccia();
+            } else {
+                correnteStep--;
+                aggiornaInterfaccia();
+            }
+        }
+    </script>
+</body>
+</html>
