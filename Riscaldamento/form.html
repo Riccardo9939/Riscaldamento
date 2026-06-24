@@ -285,8 +285,8 @@
                 const chiaviData = ['cap', 'citta', 'indirizzo', 'civico', 'tipo_progetto', 'tipo_proprieta', 'tipo_abitazione', 'dimensione_abitazione', 'tipo_impianto', 'numero_stanze', 'termostato_necessario', 'inizio_lavori', 'intenzione_lavoro'];
                 chiaviData.forEach(k => { dati[k] = localStorage.getItem('data_' + k); });
                 fetch('https://hooks.zapier.com/hooks/catch/12462472/4228exp/', { method: 'POST', body: JSON.stringify(dati) })
-                .then(() => { window.location.href = './Riscaldamento/thank-you.html'; })
-                .catch(() => { window.location.href = './Riscaldamento/thank-you.html'; });
+                .then(() => { window.location.href = './thank-you.html'; })
+                .catch(() => { window.location.href = './thank-you.html'; });
             }
         }
 
